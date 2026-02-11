@@ -1,0 +1,98 @@
+phase: develop
+order: 4
+alias: Develop
+
+purpose: |
+  Implement the solution with quality, tests, and reviewability. Build what was 
+  designed, instrument what was planned, and prepare for a confident release.
+
+entry-criteria:
+  - Design phase complete with relevant design artifacts
+  - Issue identifier (ID) and title are known
+  - Artifact folder exists at .ss5d/artifacts/<issue-id>/
+
+inputs:
+  - issue: GitHub issue ID, URL, and title
+  - problem-brief: .ss5d/artifacts/<issue-folder>/problem-brief.md
+  - acceptance-criteria: .ss5d/artifacts/<issue-folder>/acceptance-criteria.md
+  - ui-ux-design-notes: .ss5d/artifacts/<issue-folder>/ui-ux-design-notes.md (if exists)
+  - technical-design-notes: .ss5d/artifacts/<issue-folder>/technical-design-notes.md (if exists)
+  - telemetry-plan: .ss5d/artifacts/<issue-folder>/telemetry-plan.md (if exists)
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+  - codebase: Relevant existing code, patterns, and architecture context (from IDE)
+
+activities:
+  - Review design artifacts to ground the implementation work
+  - Create implementation plan - break down the work into logical steps
+  - Implement the solution following the technical design
+  - Implement UI/UX as specified in design notes
+  - Implement telemetry and observability as defined in the plans
+  - Write/update tests appropriate to risk and acceptance criteria
+  - Keep PRs reviewable - small, focused, well-documented
+  - Update documentation as part of the work
+  - Draft release notes for this change
+  - Consult Designer to confirm implementation matches UI/UX design
+  - Consult PM to confirm telemetry is instrumented as planned
+  - Consult Client SME for domain questions that arise during implementation
+  - Gather feedback from personas on any scope questions or deviations
+  - Refine until exit criteria are met
+
+personas:
+  lead-engineer:
+    role: lead
+    focus: |
+      Drive the implementation - code, tests, observability, documentation.
+      Ask: Does this meet acceptance criteria? Are tests sufficient? Is this reviewable?
+  
+  ui-ux-designer:
+    role: active
+    focus: |
+      Validate implementation matches the UI/UX design. Flag deviations or issues.
+      Ask: Does this match the design? Are all states handled? Is it accessible?
+  
+  product-mgr:
+    role: active
+    focus: |
+      Validate telemetry implementation. Consult on any scope questions.
+      Ask: Is the telemetry instrumented as planned? Are we still solving the original problem?
+  
+  client-sme:
+    role: available
+    focus: |
+      Answer domain questions that arise during implementation.
+      Ask: Is this how it works in the real world? Any edge cases we're missing?
+
+outputs:
+  primary:
+    - artifact: implementation-plan.md
+      location: .ss5d/artifacts/<issue-id>/implementation-plan.md
+      description: Breakdown of implementation steps and approach taken
+    
+    - artifact: release-notes.md
+      location: .ss5d/artifacts/<issue-id>/release-notes.md
+      description: Draft release notes describing the change (finalized in Delight)
+  
+  conditional:
+    - artifact: decision-record-adr.md
+      location: .ss5d/artifacts/<issue-id>/decision-record-adr.md
+      condition: If implementation decisions or scope changes were made
+      description: Append decisions with context, options considered, and rationale
+    
+    - artifact: acceptance-criteria.md
+      location: .ss5d/artifacts/<issue-id>/acceptance-criteria.md
+      condition: If implementation reveals need to update acceptance criteria
+      description: Update acceptance criteria to reflect changes
+
+exit-criteria:
+  - Implementation complete and meets acceptance criteria
+  - Tests added/updated and passing locally
+  - Telemetry and observability implemented as planned
+  - PR is reviewable - small, focused, well-documented
+  - UI/UX implementation validated against design
+  - Release notes drafted
+  - All personas have provided input on their areas
+
+handoff: |
+  The completed implementation, along with release-notes.md, serves as the handoff 
+  to the Delight phase. The code is ready for final review, merge, deploy, and 
+  validation of real-world impact.

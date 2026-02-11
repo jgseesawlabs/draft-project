@@ -1,0 +1,87 @@
+phase: explore
+order: 0
+alias: Explore
+
+purpose: |
+  Rapidly experiment with ideas during early client discovery. Build throwaway 
+  prototypes to spark conversation, test concepts, and learn what resonates. 
+  Move fast, capture learnings, discard code without guilt.
+
+mode: exploration
+
+entry-criteria:
+  - Client context exists in .ss5d/client-context.yaml
+  - An idea or question worth exploring
+
+inputs:
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+  - idea: Brief description of what we're exploring and why
+
+activities:
+  - Clarify what we're exploring and what we hope to learn
+  - Build the simplest thing that tests the idea
+  - Get it in front of someone (client, team, user)
+  - Capture what worked and what didn't
+  - Document questions that emerged
+  - Decide: explore further, pivot, or promote to production
+
+personas:
+  product-mgr:
+    role: light
+    focus: |
+      Occasional check-in on intent and learning.
+      Ask: What would success look like? What are we trying to learn?
+  
+  ui-ux-designer:
+    role: light
+    focus: |
+      Quick input on core interaction being tested.
+      Ask: What's the user actually experiencing? What's the one thing we're validating?
+  
+  lead-engineer:
+    role: light
+    focus: |
+      Bias toward speed over quality. This is throwaway.
+      Ask: What's the fastest way to test this? What can we skip?
+  
+  client-sme:
+    role: light
+    focus: |
+      Reality check on whether this resonates with domain.
+      Ask: Does this make sense in the real world? Would users actually do this?
+
+outputs:
+  primary:
+    - artifact: exploration-log.md
+      location: .ss5d/exploration-log.md
+      description: |
+        Append an entry documenting:
+        - What we tried
+        - What we learned
+        - Questions that emerged
+        - Links to any assets (prototypes, screenshots, recordings)
+
+prototype-location: /prototypes/
+prototype-guidance: |
+  All throwaway prototype code lives in /prototypes/. Each prototype gets its own 
+  subdirectory (e.g., /prototypes/client-app/, /prototypes/admin-dashboard/).
+  
+  These are not production code. Optimize for speed and learning, not quality.
+  When exploration ends, this directory gets archived or ignored.
+
+exit-criteria:
+  - Experiment documented in exploration-log.md
+  - Clear learning captured
+  - Decision made: continue exploring, pivot, or promote to production
+
+promote:
+  description: |
+    When an experiment proves out and is worth building properly, use `ss5d promote` 
+    to transition to the production 5D workflow.
+  
+  process:
+    - Identify which experiment is being promoted
+    - Create a GitHub issue for the production work
+    - Run `ss5d promote` with the issue ID
+    - Claude creates artifact folder and seeds problem-brief.md from exploration learnings
+    - Continue with `ss5d start` to run full Discovery with persona input

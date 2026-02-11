@@ -1,0 +1,89 @@
+phase: design
+order: 3
+alias: Design
+
+purpose: |
+  Shape the solution experience and technical approach before coding. Make deliberate 
+  decisions about UI/UX, architecture, testing strategy, and measurement - ensuring 
+  alignment across product, design, and engineering perspectives.
+
+entry-criteria:
+  - acceptance-criteria.md is complete
+  - Issue identifier (ID) and title are known
+  - Artifact folder exists at .ss5d/artifacts/<issue-id>/
+
+inputs:
+  - issue: GitHub issue ID, URL, and title
+  - problem-brief: .ss5d/artifacts/<issue-id>/problem-brief.md
+  - acceptance-criteria: .ss5d/artifacts/<issue-id>/acceptance-criteria.md
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+  - existing-designs: Any wireframes, mockups, or prototypes produced during earlier phases (if they exist)
+  - codebase: Relevant existing code, patterns, and architecture context (from IDE)
+
+activities:
+  - Review problem brief and acceptance criteria to ground the design work
+  - Design the user experience - flows, states, interactions, edge cases
+  - Ensure accessibility is addressed in the UX design
+  - Design the technical approach - architecture, patterns, components affected
+  - Define the testing strategy - what tests, at what level, covering what risks
+  - Plan technical observability - logs, events, error handling for debugging
+  - Define the telemetry plan - product metrics and usability signals to measure success
+  - Refine scope if needed - document any changes in decision record, update acceptance criteria
+  - Gather feedback from personas
+  - Refine until exit criteria are met
+
+personas:
+  ui-ux-designer:
+    role: lead
+    focus: |
+      Drive the UX design - flows, states, interactions, accessibility, and edge cases.
+      Ask: What are all the states? How does the user recover from errors? Is this accessible?
+  
+  lead-engineer:
+    role: lead
+    focus: |
+      Drive the technical design - architecture, patterns, testing strategy, observability.
+      Ask: What's the simplest approach? What are the failure modes? What tests give us confidence?
+  
+  product-mgr:
+    role: active
+    focus: |
+      Ensure design ties back to user value and acceptance criteria. Drive telemetry planning.
+      Ask: Does this still solve the original problem? How will we measure success? What signals indicate user confusion?
+
+outputs:
+  primary:
+    - artifact: ui-ux-design-notes.md
+      location: .ss5d/artifacts/<issue-id>/ui-ux-design-notes.md
+      description: Proposed UI/UX - flows, states, interactions, edge cases, accessibility considerations
+    
+    - artifact: technical-design-notes.md
+      location: .ss5d/artifacts/<issue-id>/technical-design-notes.md
+      description: Proposed technical approach - architecture, patterns, testing strategy, observability plan
+    
+    - artifact: telemetry-plan.md
+      location: .ss5d/artifacts/<issue-id>/telemetry-plan.md
+      description: Product metrics and usability signals to measure success and detect friction
+  
+  conditional:
+    - artifact: decision-record-adr.md
+      location: .ss5d/artifacts/<issue-id>/decision-record-adr.md
+      condition: If design decisions, tradeoffs, or scope changes were made
+      description: Append decisions with context, options considered, and rationale
+    
+    - artifact: acceptance-criteria.md
+      location: .ss5d/artifacts/<issue-id>/acceptance-criteria.md
+      condition: If scope refinement requires updates to acceptance criteria
+      description: Update acceptance criteria to reflect scope changes
+
+exit-criteria:
+  - UI/UX design documented - flows, states, edge cases, accessibility
+  - Technical approach documented - architecture, patterns, testing strategy, observability
+  - Telemetry plan documented - product metrics and usability signals
+  - Open questions resolved or explicitly deferred
+  - All personas have provided input
+
+handoff: |
+  The completed design artifacts (ui-ux-design-notes.md, technical-design-notes.md, 
+  telemetry-plan.md) serve as the handoff to the Develop phase. They define how the 
+  solution will be built, tested, and measured.

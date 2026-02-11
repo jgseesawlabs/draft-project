@@ -1,0 +1,55 @@
+client:
+  name: ""
+  industry: ""
+  description: |
+    # Brief description of the client's business
+
+project:
+  name: ""
+  summary: |
+    # What is this product? What problem does it solve?
+  
+  why-now: |
+    # Why is the client tackling this now? What's the trigger or urgency?
+
+  success-criteria:
+    # What does the client consider a win? How will they judge this project?
+    - ""
+
+  history: |
+    # What's been tried before? Why did previous solutions fail or fall short?
+    # Leave blank if greenfield.
+
+users:
+  # Who are the actual users of this product?
+  - type: ""
+    description: |
+      # Who are they? What do they care about?
+    behaviors: 
+      # Known behaviors, preferences, pain points from client's experience
+      - ""
+
+stakeholders:
+  # Who are the decision-makers and influencers?
+  - role: ""
+    name: ""
+    cares-about:
+      - ""
+
+domain:
+  terminology:
+    # Key terms the team needs to understand correctly
+    - term: ""
+      meaning: ""
+  
+  concepts: |
+    # Any domain-specific knowledge the team needs to work effectively
+
+constraints:
+  business:
+    # Organizational, regulatory, compliance, political realities
+    - ""
+  
+  technical:
+    # Required integrations, platform requirements, technical limitations from client
+    - ""

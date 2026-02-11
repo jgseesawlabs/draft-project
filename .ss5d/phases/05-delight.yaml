@@ -1,0 +1,97 @@
+phase: delight
+order: 5
+alias: Delight
+
+purpose: |
+  Finalize everything for deployment and establish the feedback loop. Prepare release 
+  notes, validate telemetry is working, and create the follow-up issue that will drive 
+  data gathering and iteration decisions.
+
+entry-criteria:
+  - Implementation complete and PR ready for merge
+  - Issue identifier (ID) and title are known
+  - Artifact folder exists at .ss5d/artifacts/<issue-id>/
+
+inputs:
+  - issue: GitHub issue ID, URL, and title
+  - problem-brief: .ss5d/artifacts/<issue-id>/problem-brief.md
+  - acceptance-criteria: .ss5d/artifacts/<issue-id>/acceptance-criteria.md
+  - telemetry-plan: .ss5d/artifacts/<issue-id>/telemetry-plan.md
+  - release-notes: .ss5d/artifacts/<issue-id>/release-notes.md (draft from Develop)
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+
+activities:
+  - Review and finalize release notes
+  - Validate telemetry implementation is working correctly
+  - Confirm instrumentation matches telemetry plan - logs, events, metrics are firing
+  - Verify data is being captured and is reliable
+  - Create feedback-summary scaffold with questions to answer and review date
+  - Prepare follow-up issue for PM to track feedback gathering and iteration decision
+  - Final review with all personas before deployment
+  - Refine until exit criteria are met
+
+personas:
+  product-mgr:
+    role: lead
+    focus: |
+      Own the feedback loop setup. Define success metrics, review date, and iteration questions.
+      Ask: What signals will tell us this worked? When will we review? What questions must the data answer?
+  
+  ui-ux-designer:
+    role: active
+    focus: |
+      Define usability signals to watch for. Identify friction points to monitor.
+      Ask: What would indicate user confusion? What qualitative feedback channels should we watch?
+  
+  lead-engineer:
+    role: active
+    focus: |
+      Validate telemetry implementation. Confirm data reliability and instrumentation correctness.
+      Ask: Is telemetry firing correctly? Is data being captured? Can we trust these signals?
+  
+  client-sme:
+    role: active
+    focus: |
+      Validate deployment readiness against real-world expectations.
+      Ask: Is this ready for real users? Any domain concerns before we ship?
+
+outputs:
+  primary:
+    - artifact: release-notes.md
+      location: .ss5d/artifacts/<issue-id>/release-notes.md
+      description: Finalized release notes describing the change
+    
+    - artifact: feedback-summary.md
+      location: .ss5d/artifacts/<issue-id>/feedback-summary.md
+      description: |
+        Scaffold for feedback analysis containing:
+        - Issue reference
+        - Questions the data should answer
+        - Success and failure signals to watch
+        - Usability signals and friction points to monitor
+        - Planned review date
+        - Placeholder for "what should we do next" decision
+    
+    - artifact: follow-up-issue
+      location: GitHub issue (copy/paste ready)
+      description: |
+        Issue for PM to track feedback gathering and iteration decision. 
+        References feedback-summary.md and telemetry-plan.md.
+  
+  conditional:
+    - artifact: decision-record-adr.md
+      location: .ss5d/artifacts/<issue-id>/decision-record-adr.md
+      condition: If any final decisions were made before deployment
+      description: Append decisions with context and rationale
+
+exit-criteria:
+  - Release notes finalized
+  - Telemetry validated and confirmed working
+  - Feedback-summary scaffold created with review date and questions
+  - Follow-up issue prepared (copy/paste ready for GitHub)
+  - All personas have signed off on deployment readiness
+
+handoff: |
+  The issue is ready for deployment. The follow-up issue goes on the board for the PM 
+  to gather telemetry data, analyze feedback, and decide whether to iterate (loop back 
+  to Discover) or hold/monitor.

@@ -1,0 +1,91 @@
+phase: discovery
+order: 1
+alias: Discover
+
+purpose: |
+  Understand the problem and context before committing to a solution. Explore the 
+  problem space, surface assumptions, and consider potential approaches - but don't 
+  commit to one yet.
+
+entry-criteria:
+  - GitHub issue identifier (ID) is provided
+  - Issue has enough initial context to begin exploration
+
+inputs:
+  - issue: GitHub issue ID, URL, title, and description
+  - codebase: Relevant existing code, patterns, and architecture context (from IDE)
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+  - prior-artifacts: Any existing documentation or decisions that inform this work
+
+setup:
+  artifact-folder:
+    location: .ss5d/artifacts/
+    naming-convention: "<issue-id>"
+    instructions: |
+      Before creating any artifacts, create the issue's artifact folder:
+      1. Take the GitHub issue ID (e.g., 42)
+      2. Combine as: <id> (e.g., "42")
+      3. Create folder at: .ss5d/artifacts/42/
+      
+      All artifacts for this issue will be created within this folder.
+
+activities:
+  - Create the artifact folder following the setup instructions above
+  - Read and deeply understand the issue and its context
+  - Ask clarifying questions about user needs and business context
+  - Surface assumptions, unknowns, and potential risks
+  - Explore the problem space - what are we really trying to solve?
+  - Consider potential solution approaches without committing to one
+  - Identify technical constraints or opportunities that shape the problem
+  - Draft the problem brief
+  - Gather feedback from all personas
+  - Refine until exit criteria are met
+
+personas:
+  product-mgr:
+    role: lead
+    focus: |
+      Drive clarity on user value, business outcome, and scope boundaries. 
+      Ask: Who is the user? What pain are we solving? What does success look like?
+  
+  ui-ux-designer:
+    role: active
+    focus: |
+      Surface user flow context, UX considerations, and edge cases early.
+      Ask: What's the user's starting point? What existing flows does this touch?
+  
+  lead-engineer:
+    role: active
+    focus: |
+      Flag technical constraints, opportunities, and codebase context that shape the problem.
+      Ask: What parts of the system does this touch? Are there existing patterns to leverage?
+  
+  client-sme:
+    role: active
+    focus: |
+      Validate the problem against domain reality. Challenge assumptions about user behavior.
+      Ask: Does this match the real problem? What's been tried before?
+
+outputs:
+  primary:
+    - artifact: problem-brief.md
+      location: .ss5d/artifacts/<issue-id>/problem-brief.md
+      description: Clear articulation of the problem, context, user, value, and scope boundaries
+  
+  conditional:
+    - artifact: decision-record-adr.md
+      location: .ss5d/artifacts/<issue-id>/decision-record-adr.md
+      condition: If significant decisions or constraints are identified during discovery
+      description: Append any decisions made with context and rationale
+
+exit-criteria:
+  - Clear problem statement articulated
+  - User and value proposition clarified
+  - Scope boundaries stated (what's in, what's explicitly out)
+  - Technical context and constraints understood
+  - Open questions listed (and answered or deferred intentionally)
+  - All personas have provided input
+
+handoff: |
+  The completed problem-brief.md serves as the handoff to the Define phase. It should 
+  contain everything the team needs to evaluate and commit to a specific solution approach.

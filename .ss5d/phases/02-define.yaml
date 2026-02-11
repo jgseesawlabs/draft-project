@@ -1,0 +1,77 @@
+phase: define
+order: 2
+alias: Define
+
+purpose: |
+  Convert the problem into clear, testable requirements. Evaluate potential solution 
+  approaches from Discovery and commit to the best path forward. Define what "done" 
+  looks like in concrete, measurable terms.
+
+entry-criteria:
+  - problem-brief.md is complete
+  - Issue identifier (ID) and title are known
+  - Artifact folder exists at .ss5d/artifacts/<issue-id>/
+
+inputs:
+  - issue: GitHub issue ID, URL, and title
+  - problem-brief: .ss5d/artifacts/<issue-id>/problem-brief.md
+  - client-context: Domain knowledge from .ss5d/client-context.yaml
+
+activities:
+  - Review the problem brief and potential solution approaches identified in Discovery
+  - Evaluate solution options - weigh tradeoffs, feasibility, and alignment with user value
+  - Commit to the best solution approach for this iteration
+  - Define what "done" looks like in concrete, testable terms
+  - Write acceptance criteria as checkable statements
+  - Surface technical risks and feasibility concerns
+  - Consider rollout strategy and guardrails if needed
+  - Gather feedback from all personas
+  - Refine until exit criteria are met
+
+personas:
+  product-mgr:
+    role: lead
+    focus: |
+      Ensure "done" is measurable and tied to user value. Drive clarity on acceptance criteria.
+      Ask: How will we know this succeeded? Is each criterion testable? Are we solving the right problem?
+  
+  ui-ux-designer:
+    role: active
+    focus: |
+      Ensure acceptance criteria account for all necessary states and user experience considerations.
+      Ask: Do criteria cover error, empty, and loading states? Are edge cases accounted for?
+  
+  lead-engineer:
+    role: active
+    focus: |
+      Flag feasibility concerns and technical risks.
+      Ask: Is this achievable in the proposed scope? What could go wrong technically?
+  
+  client-sme:
+    role: active
+    focus: |
+      Validate that acceptance criteria reflect what the client considers success.
+      Ask: Does this match client expectations? Are we missing any business requirements?
+
+outputs:
+  primary:
+    - artifact: acceptance-criteria.md
+      location: .ss5d/artifacts/<issue-id>/acceptance-criteria.md
+      description: Clear, testable statements defining what "done" means for this issue
+  
+  conditional:
+    - artifact: decision-record-adr.md
+      location: .ss5d/artifacts/<issue-id>/decision-record-adr.md
+      condition: If solution tradeoffs or significant decisions were made
+      description: Append decisions with context, options considered, and rationale
+
+exit-criteria:
+  - Solution approach selected and documented
+  - Acceptance criteria written as checkable statements
+  - Technical risks and feasibility concerns surfaced
+  - Rollout strategy and guardrails noted (if applicable)
+  - All personas have provided input
+
+handoff: |
+  The completed acceptance-criteria.md serves as the handoff to the Design phase. It 
+  defines the target the team is designing and building toward.
