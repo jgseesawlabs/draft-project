@@ -1,0 +1,23 @@
+issue:
+  id: 42
+  title: "Create the FE foundation"
+  url: "https://github.com/jgseesawlabs/draft-project/issues/42"
+
+current-phase: discovery
+
+phases:
+  discovery:
+    status: in-progress
+    started-at: 2026-02-11T00:00:00Z
+  define:
+    status: pending
+  design:
+    status: pending
+  develop:
+    status: pending
+  delight:
+    status: pending
+
+artifacts: []
+
+open-questions: []
