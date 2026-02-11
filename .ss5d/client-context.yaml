@@ -1,55 +1,172 @@
 client:
-  name: ""
-  industry: ""
+  name: "Aspire"
+  industry: "Tax Advisory, Business Education & Financial Strategy"
   description: |
-    # Brief description of the client's business
+    Aspire is a tax strategy advisory and education organization focused on helping small and medium
+    business owners reduce tax liability through advanced, proactive tax planning.
+
+    Aspire provides access to elite tax strategies, community-based education, and CPA-aligned guidance.
+    However, while members gain awareness of powerful tax strategies, many struggle with consistent
+    execution due to operational complexity, lack of structured workflows, and insufficient
+    accountability systems.
+
+    Hey Drew represents Aspire's strategic move into a technology-enabled execution platform,
+    transforming tax strategy knowledge into scalable, structured, and enforceable systems.
 
 project:
-  name: ""
+  name: "Hey Drew – Tax Strategy Execution & Accountability Platform"
   summary: |
-    # What is this product? What problem does it solve?
-  
+    Hey Drew is a technology-driven tax strategy execution and accountability platform designed to
+    become the system of record for a small business owner's tax life.
+
+    It solves the execution gap in tax planning by transforming elite tax strategy knowledge into
+    deterministic workflows supported by AI guidance and human oversight.
+
+    Rather than functioning as an educational product or AI chatbot, Hey Drew operationalizes
+    strategy implementation through:
+    - Structured execution workflows
+    - Task enforcement and reminders
+    - AI-assisted guidance
+    - Human-in-the-loop approvals
+    - Auditability and compliance controls
+
+    The core problem it solves:
+    Small and medium business owners are aware of tax strategies but consistently fail to implement
+    them due to time constraints, lack of systems, and operational friction.
+
   why-now: |
-    # Why is the client tackling this now? What's the trigger or urgency?
+    - Increasing dissatisfaction with traditional CPAs who focus on filing rather than proactive execution.
+    - Growing willingness among SMBs to pay for outcomes rather than advice.
+    - AI tools becoming table stakes, requiring differentiation beyond chat.
+    - Clear competitive whitespace: no dominant player owns strategy + execution + accountability + auditability.
+    - Internal urgency driven by the April 1st demo milestone.
 
   success-criteria:
-    # What does the client consider a win? How will they judge this project?
-    - ""
+    - "Users complete strategies end-to-end with system guidance."
+    - "Execution drop-off is prevented via structured tasks and enforcement."
+    - "Strategy progress is visible and auditable."
+    - "Human oversight is embedded without breaking scalability."
+    - "The platform becomes the trusted system of record for tax execution."
+    - "Customers are willing to pay a premium for guaranteed execution discipline."
 
   history: |
-    # What's been tried before? Why did previous solutions fail or fall short?
-    # Leave blank if greenfield.
+    Greenfield technology product.
+    While tax strategy knowledge exists within Aspire, no structured system has been built to
+    operationalize execution through deterministic workflows and AI orchestration.
 
 users:
-  # Who are the actual users of this product?
-  - type: ""
+  - type: "Business Owner"
     description: |
-      # Who are they? What do they care about?
-    behaviors: 
-      # Known behaviors, preferences, pain points from client's experience
-      - ""
+      Small to medium business owners generating approximately $250k–$1M annually.
+      Already working with a CPA but dissatisfied with:
+      - Lack of proactive planning
+      - Poor execution follow-through
+      - Fragmented document workflows
+
+      They care about:
+      - Concrete savings
+      - Clear next steps
+      - Reduced friction
+      - Time efficiency
+      - Compliance confidence
+    behaviors:
+      - "High awareness, low execution consistency."
+      - "Drop off without structured accountability."
+      - "Prefer guided steps over educational content."
+      - "Motivated by visible ROI."
+
+  - type: "CPA / Internal Pod Operator"
+    description: |
+      Tax professionals responsible for reviewing strategies, validating eligibility, requesting
+      missing info, and guiding execution.
+
+      They care about:
+      - Structured, auditable workflows
+      - Reduced manual prep
+      - Clear document normalization
+      - Decision traceability
+      - Operational efficiency across multiple clients
+    behaviors:
+      - "Skeptical of ungrounded AI."
+      - "Require deterministic logic."
+      - "Value human oversight checkpoints."
+      - "Need clear visibility into overrides and approvals."
+      - "Needs fast case triage, shared context, strong audit/compliance logging, and async messaging."
+      - "Wants minimal manual coordination and fewer 'status ping' loops."
 
 stakeholders:
-  # Who are the decision-makers and influencers?
-  - role: ""
-    name: ""
+  - role: "Executive sponsor / business owner"
+    name: "Steve Williams"
     cares-about:
-      - ""
+      - "Time-to-market"
+      - "Scalable self-serve onboarding"
+      - "Revenue readiness"
+      - "Investor/roadshow readiness"
+      - "Competitive differentiation"
+      - "Ability to scale the back office"
+
+  - role: "Product/Engineering leadership (delivery and scope control)"
+    name: "Calvin Locklear"
+    cares-about:
+      - "Hitting deadlines with realistic scope"
+      - "Strong UX prototype"
+      - "Defining MVP slices"
+      - "Avoiding avoidable complexity early"
+      - "Ensuring build is extendable"
+
+  - role: "Compliance/quality/strategy partner (risk and feasibility)"
+    name: "Jeff Winesett"
+    cares-about:
+      - "SOC 2 + GLBA from day one"
+      - "Clear phasing"
+      - "Minimizing risky overpromises"
+      - "Practical build vs buy decisions"
+      - "Ensuring a credible 'working' milestone"
 
 domain:
   terminology:
-    # Key terms the team needs to understand correctly
-    - term: ""
-      meaning: ""
-  
+    - term: "Tax Strategy"
+      meaning: "A legally compliant structured method to reduce tax liability."
+    - term: "Execution Workflow"
+      meaning: "A sequence of required tasks, dependencies, and deadlines to implement a strategy."
+    - term: "Human-in-the-Loop (HITL)"
+      meaning: "CPA or internal approval checkpoints embedded within automated workflows."
+    - term: "System of Record"
+      meaning: "The authoritative source of truth for strategy lifecycle and status."
+    - term: "Strategy Eligibility"
+      meaning: "Deterministic rules that determine whether a user qualifies for a strategy."
+    - term: "Audit Trail"
+      meaning: "Log of actions, approvals, overrides, and system events."
+    - term: "Execution State"
+      meaning: "Status of strategy progression (pending, in progress, blocked, completed)."
+    - term: "SOC 2"
+      meaning: "Security/compliance framework needed for handling sensitive data and building partner trust."
+    - term: "GLBA"
+      meaning: "US regulation governing protection of consumer financial information (PII)."
+    - term: "PII"
+      meaning: "Personally Identifiable Information (must be protected in storage, transit, and access)."
+    - term: "IDP / OCR"
+      meaning: "Intelligent Document Processing / Optical Character Recognition used to extract structured data from PDFs/images."
+    - term: "Augusta Rule"
+      meaning: "Strategy enabling business use of personal residence rental (requires compliant contract + supporting documentation)."
+    - term: "Token redemption"
+      meaning: "Controlled access approach (invite/token) used instead of payments for early beta."
+
   concepts: |
-    # Any domain-specific knowledge the team needs to work effectively
+    - Execution enforcement is the core differentiator.
+    - AI must be grounded in deterministic, auditable outputs.
+    - Compliance posture (SOC 2 / GLBA) influences architecture.
+    - Human oversight is required for trust and adoption.
+    - Document ingestion is foundational but not differentiating.
+    - Strategy value is realized only when execution is enforced.
+    - Strategies are "known," but execution requires workflows, artifact generation, and accountability (tasks/checklists).
+    - The product must balance education + action + compliance, not just chat.
+    - Scaling depends on reducing back-office effort via structure, automation, and clean handoffs.
+    - "Tax filing" may be offloaded via external API partners rather than built in-house initially.
 
 constraints:
   business:
-    # Organizational, regulatory, compliance, political realities
     - ""
-  
+
   technical:
-    # Required integrations, platform requirements, technical limitations from client
     - ""
